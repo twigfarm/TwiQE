@@ -16,7 +16,7 @@ en-ko
 
 #### Step2. Do predict
 Set up a list by pairing in the order of `[original text, translation text, and round-trip translation text]`. 
-Round-trip translations were translated by the Translate API.
+Round-trip translations were translated by the Cloud Translation API.
 ```python
 sentences = [
     ["구체적이어야 합니다.", 
@@ -66,7 +66,7 @@ model = TwiQE(source_language_code='ko', target_language_code='en')
 
 #### Step2. Train model
 Set up a list by pairing in the order of `[original text, translation text, and round-trip translation text]`.
-Round-trip translations were translated by the Translate API.
+Round-trip translations were translated by the Cloud Translation API.
 ```python
 sentences = [
      ["대신 병원에서 여태까지 만들어진 것을 보고 싶다고 하세요.",
