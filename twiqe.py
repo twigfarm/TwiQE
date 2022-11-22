@@ -3,6 +3,7 @@ from tqdm import trange
 import logging
 import os
 from datetime import datetime
+import pandas as pd
 
 import torch
 
@@ -195,7 +196,10 @@ class TwiQE:
                                                               "rtt_n_tokens": "rtt_n_tokens",
                                                               "diff": "diff"}):
         assert self.score_model_path is not None, "Train TwiQE first or Put `score_model_path` into the model instance!"
-        self._extract_features_from_already_done(sentences, df_col_match)
+        if isinstance(sentences, pd.DataFrame):
+            self._extract_features_from_already_done(sentences, df_col_match)
+        else:
+            self._extract_features(sentences, batch_size=batch_size)
 
         features_for_predict = np.array([self.src_tgt_cossim, self.src_rtt_cossim,
                                          self.src_n_tokens, self.rtt_n_tokens, self.diff]).transpose()
